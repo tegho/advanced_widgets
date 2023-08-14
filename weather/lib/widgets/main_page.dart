@@ -20,9 +20,9 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
     final bloc = context.read<AppBloc>();
     // print('Button');
-    bloc.add(ActionChangeTheme(theme: ThemeData(primarySwatch: Colors.lime)));
-    bloc.add(ActionChangeThemePreset(preset: ThemePreset.custom));
-        setState(()
+    // bloc.add(ActionChangeTheme(theme: ThemeData(primarySwatch: Colors.lime)));
+    // bloc.add(ActionChangeThemePreset(preset: ThemePreset.custom));
+    setState(()
     {
       _counter++;
     });

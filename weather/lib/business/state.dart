@@ -13,7 +13,7 @@ class AppState with _$AppState {
   const factory AppState({
     ActionBase? lastAction,
     required ThemePreset themePreset,
-    required MaterialColor themeColor,
+    // required MaterialColor themeColor,
     required ThemeData theme,
     required double weatherLevel,
   }) = _AppState;

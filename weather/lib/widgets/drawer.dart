@@ -3,7 +3,7 @@ import 'dart:async';
 import '/business/business.dart';
 
 import 'package:flutter/material.dart';
-import '/themes/themes.dart';
+import '/themes/app_theme.dart';
 import '/widgets/color_pick.dart';
 
 class DrawerSettings extends StatelessWidget {
@@ -16,7 +16,7 @@ class DrawerSettings extends StatelessWidget {
       child: SingleChildScrollView(
         child: BlocBuilder<AppBloc, AppState>(builder: (context, state) {
           return Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const Padding(
                 padding: EdgeInsets.all(16),
@@ -29,28 +29,32 @@ class DrawerSettings extends StatelessWidget {
                 ),
               ),
               const Divider(),
-              SegmentedButton<ThemePreset>(
-                selected: {bloc.state.themePreset},
-                onSelectionChanged: (Set<ThemePreset> newSelection) {
-                  bloc.add(
-                      ActionChangeThemePreset(preset: newSelection.single));
-                },
-                segments: const [
-                  ButtonSegment<ThemePreset>(
-                    value: ThemePreset.light,
-                    label: Text('Light'),
-                  ),
-                  ButtonSegment<ThemePreset>(
-                    value: ThemePreset.custom,
-                    label: Text('Custom'),
-                  ),
-                  ButtonSegment<ThemePreset>(
-                    value: ThemePreset.dark,
-                    label: Text('Dark'),
-                  ),
-                ],
+              const Center(child: Text('Choose a theme')),
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: SegmentedButton<ThemePreset>(
+                  selected: {bloc.state.themePreset},
+                  onSelectionChanged: (Set<ThemePreset> newSelection) {
+                    bloc.add(
+                        ActionChangeThemePreset(preset: newSelection.single));
+                  },
+                  segments: const [
+                    ButtonSegment<ThemePreset>(
+                      value: ThemePreset.light,
+                      label: Text('Light'),
+                    ),
+                    ButtonSegment<ThemePreset>(
+                      value: ThemePreset.custom,
+                      label: Text('Custom'),
+                    ),
+                    ButtonSegment<ThemePreset>(
+                      value: ThemePreset.dark,
+                      label: Text('Dark'),
+                    ),
+                  ],
+                ),
               ),
-              const ColorPick(),
+              // const ColorPick(),
             ],
           );
         }),
