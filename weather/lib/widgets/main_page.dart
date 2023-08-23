@@ -1,9 +1,8 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-// export 'package:flutter_bloc/flutter_bloc.dart';
 
 import '/business/business.dart';
 import '/widgets/drawer.dart';
+import '/widgets/weather/weather_indicator.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -15,49 +14,66 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    final bloc = context.read<AppBloc>();
-    // print('Button');
-    // bloc.add(ActionChangeTheme(theme: ThemeData(primarySwatch: Colors.lime)));
-    // bloc.add(ActionChangeThemePreset(preset: ThemePreset.custom));
-    setState(()
-    {
-      _counter++;
-    });
-  }
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    // print('main_page_build');
+    final bloc = context.read<AppBloc>();
+
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
-        title: Text(widget.title),
+        title: BlocBuilder<AppBloc, AppState>(builder: (context, state) {
+          return Text('${widget.title}  ${state.weatherLevel}');
+        }),
       ),
-      drawer: const DrawerSettings(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      drawer: DrawerSettings(
+        scaffoldKey: scaffoldKey,
+      ),
+      body: BlocBuilder<AppBloc, AppState>(builder: (context, state) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Padding(
+              padding:
+                  const EdgeInsets.only(top: 20, bottom: 8, left: 8, right: 8),
+              child: Slider(
+                value: state.weatherLevel,
+                divisions: 100,
+                label: state.weatherLevel.toString(),
+                onChanged: (newValue) {
+                  bloc.add(ActionChangeWeatherLevel(weatherLevel: newValue));
+                },
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headlineMedium,
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  // alignment: Alignment.center,
+                  // alignment: Alignment.bottomLeft,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(),
+                      borderRadius: const BorderRadius.all(Radius.circular(30)),
+                      // color: Colors.blueAccent,
+                    ),
+                    child: WeatherIndicator(
+                      weatherLevel: state.weatherLevel,
+                      mode: state.widgetMode,
+                      onModeChanged: (newMode) {
+                        bloc.add(ActionChangeWidgetMode(newMode: newMode));
+                      },
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+        );
+      }),
     );
   }
 }

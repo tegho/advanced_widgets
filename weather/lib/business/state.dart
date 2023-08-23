@@ -7,15 +7,16 @@ part 'state.freezed.dart';
 // part 'state.g.dart';
 
 enum ThemePreset { light, dark, custom }
+enum WeatherWidgetMode { big, small }
 
 @freezed
 class AppState with _$AppState {
   const factory AppState({
     ActionBase? lastAction,
     required ThemePreset themePreset,
-    // required MaterialColor themeColor,
     required ThemeData theme,
     required double weatherLevel,
+    required WeatherWidgetMode widgetMode,
   }) = _AppState;
 
 // factory AppState.fromJson(Map<String, Object?> json) =>

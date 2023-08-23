@@ -12,12 +12,15 @@ class AppBloc extends Bloc<ActionBase, AppState> {
           AppState(
             themePreset: ThemePreset.dark,
             theme: ThemeData.dark(),
-            weatherLevel: 0.5,
+            weatherLevel: 0.25,
+            widgetMode: WeatherWidgetMode.small,
           ),
         ) {
     on<ActionInit>(_onActionInit);
     on<ActionPullState>(_onActionPullState);
     on<ActionChangeThemePreset>(_onActionChangeThemePreset);
+    on<ActionChangeWeatherLevel>(_onActionChangeWeatherLevel);
+    on<ActionChangeWidgetMode>(_onActionChangeWidgetMode);
   }
 
   Future<void> _onActionInit(ActionInit action, Emitter<AppState> emit) async {
@@ -63,5 +66,15 @@ class AppBloc extends Bloc<ActionBase, AppState> {
     }
     emit(state.copyWith(
         lastAction: action, theme: theme, themePreset: action.preset));
+  }
+
+  Future<void> _onActionChangeWeatherLevel(
+      ActionChangeWeatherLevel action, Emitter<AppState> emit) async {
+    emit(state.copyWith(weatherLevel: action.weatherLevel));
+  }
+
+  Future<void> _onActionChangeWidgetMode(
+      ActionChangeWidgetMode action, Emitter<AppState> emit) async {
+    emit(state.copyWith(lastAction: action, widgetMode: action.newMode));
   }
 }

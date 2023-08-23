@@ -1,13 +1,10 @@
-import 'dart:async';
-
+import 'package:flutter/material.dart';
 import '/business/business.dart';
 
-import 'package:flutter/material.dart';
-import '/themes/app_theme.dart';
-import '/widgets/color_pick.dart';
-
 class DrawerSettings extends StatelessWidget {
-  const DrawerSettings({super.key});
+  const DrawerSettings({super.key, required this.scaffoldKey});
+
+  final GlobalKey<ScaffoldState> scaffoldKey;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +34,7 @@ class DrawerSettings extends StatelessWidget {
                   onSelectionChanged: (Set<ThemePreset> newSelection) {
                     bloc.add(
                         ActionChangeThemePreset(preset: newSelection.single));
+                    scaffoldKey.currentState?.closeDrawer();
                   },
                   segments: const [
                     ButtonSegment<ThemePreset>(
