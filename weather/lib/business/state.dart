@@ -4,9 +4,8 @@ import '/business/actions.dart';
 
 part 'state.freezed.dart';
 
-// part 'state.g.dart';
-
 enum ThemePreset { light, dark, custom }
+
 enum WeatherWidgetMode { big, small }
 
 @freezed

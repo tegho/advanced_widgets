@@ -19,22 +19,22 @@ class WeatherStatic extends StatelessWidget {
 
   List<String> _weatherToString() {
     List<String> ret = [];
-    if (weatherLevel > constRainLevel3) {
+    if (weatherLevel >= constRainLevel3) {
       ret.add('Проливные дожди');
       ret.add('Холодно');
-    } else if (weatherLevel > constRainLevel2) {
+    } else if (weatherLevel >= constRainLevel2) {
       ret.add('Сильный дождь');
       ret.add('Прохладно');
-    } else if (weatherLevel > constRainLevel1) {
+    } else if (weatherLevel >= constRainLevel1) {
       ret.add('Дождь');
       ret.add('Прохладно');
-    } else if (weatherLevel > constHighCloudLevel) {
+    } else if (weatherLevel >= constHighCloudLevel) {
       ret.add('Пасмурно');
       ret.add('Тепло');
-    } else if (weatherLevel > (constHighCloudLevel + constLowCloudLevel) / 2) {
+    } else if (weatherLevel >= (constHighCloudLevel + constLowCloudLevel) / 2) {
       ret.add('Облачно');
       ret.add('Тепло');
-    } else if (weatherLevel > constLowCloudLevel) {
+    } else if (weatherLevel >= constLowCloudLevel) {
       ret.add('Слабая облачность');
       ret.add('Тепло');
     } else {

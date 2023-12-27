@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '/business/business.dart';
 
 class ApplicationTheme extends InheritedWidget {
   final ThemeData theme;
@@ -17,7 +16,7 @@ class ApplicationTheme extends InheritedWidget {
 
   static ThemeData of(BuildContext context) {
     final obj = context.dependOnInheritedWidgetOfExactType<ApplicationTheme>();
-    assert (obj!=null,'No ApplicationTheme found in this context.');
+    assert(obj != null, 'No ApplicationTheme found in this context.');
     return obj!.theme;
   }
 }

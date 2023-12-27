@@ -7,19 +7,20 @@ class WeatherPainter extends CustomPainter {
   final double weatherLevel;
 
   double _cloudOpacity() {
-    const minOpacity = 0.7;
-    const k = (1 - minOpacity) / (constHighCloudLevel - constLowCloudLevel);
+    const k =
+        (1 - constMinCloudOpacity) / (constHighCloudLevel - constLowCloudLevel);
 
     if (weatherLevel < constLowCloudLevel) return 0;
     if (weatherLevel > constHighCloudLevel) return 1;
-    return minOpacity + k * (weatherLevel - constLowCloudLevel);
+    return constMinCloudOpacity + k * (weatherLevel - constLowCloudLevel);
   }
 
   double _cloudOffset() {
     if (weatherLevel < constLowCloudLevel) return 1;
     if (weatherLevel > constHighCloudLevel) return 0;
     return 1 -
-        (weatherLevel - constLowCloudLevel) / (constHighCloudLevel - constLowCloudLevel);
+        (weatherLevel - constLowCloudLevel) /
+            (constHighCloudLevel - constLowCloudLevel);
   }
 
   @override
@@ -40,7 +41,6 @@ class WeatherPainter extends CustomPainter {
     const sunColor = Colors.yellow;
     final cloudColor = Colors.grey.shade700;
     const rainColor = Colors.purple;
-    final paintBorders = Paint()..style = PaintingStyle.stroke;
     final paintSun = Paint()..color = sunColor;
     final paintClouds = Paint()
       ..color = Color.fromRGBO(
@@ -84,6 +84,7 @@ class WeatherPainter extends CustomPainter {
     canvas.clipRect(Rect.fromLTWH(0, 0, size.width, size.height));
 
     // DEBUG: paint borders
+    // final paintBorders = Paint()..style = PaintingStyle.stroke;
     // canvas.drawRect(Rect.fromLTWH(0, 0, size.width, size.height), paintBorders);
 
     // sun
@@ -92,10 +93,10 @@ class WeatherPainter extends CustomPainter {
     }
 
     // cloud
-    // final cloudCenter =
-    //     centerPoint + const Offset(30, -30) * k * _cloudOffset();
     final cloudCenter =
         centerPoint + const Offset(40, -10) * k * _cloudOffset();
+    // final cloudCenter =
+    //     centerPoint + const Offset(60, 0) * k * _cloudOffset();
 
     final pathCloud = Path();
     for (final bubble in bubblesSet) {

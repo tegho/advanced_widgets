@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '/business/business.dart';
 import '/widgets/drawer.dart';
 import '/widgets/weather/weather_indicator.dart';
+import '/widgets/text/decorated_text.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -68,6 +69,27 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                     ),
                   ),
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Center(
+                child: DecoratedText(
+                  'Decorated 1',
+                  textScaleFactor: 3,
+                  blurColor: Colors.green,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: DecoratedText(
+                  'Decorated 2',
+                  textScaleFactor: 2,
+                  blurAngle: 60 - state.weatherLevel * 120,
+                  blurColor: Colors.blue,
                 ),
               ),
             ),

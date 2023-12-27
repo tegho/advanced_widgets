@@ -7,3 +7,5 @@ const double constHighCloudLevel = 0.5;
 const double constRainLevel1 = 0.6;
 const double constRainLevel2 = 0.7;
 const double constRainLevel3 = 0.85;
+
+const double constMinCloudOpacity = 0.7;
