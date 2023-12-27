@@ -11,7 +11,7 @@ enum WeatherWidgetMode { big, small }
 @freezed
 class AppState with _$AppState {
   const factory AppState({
-    BaseEvent? lastAction,
+    BaseEvent? lastEvent,
     required ThemePreset themePreset,
     required ThemeData theme,
     required double weatherLevel,

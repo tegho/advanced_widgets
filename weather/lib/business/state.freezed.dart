@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AppState {
-  BaseEvent? get lastAction => throw _privateConstructorUsedError;
+  BaseEvent? get lastEvent => throw _privateConstructorUsedError;
   ThemePreset get themePreset => throw _privateConstructorUsedError;
   ThemeData get theme => throw _privateConstructorUsedError;
   double get weatherLevel => throw _privateConstructorUsedError;
@@ -33,7 +33,7 @@ abstract class $AppStateCopyWith<$Res> {
       _$AppStateCopyWithImpl<$Res, AppState>;
   @useResult
   $Res call(
-      {BaseEvent? lastAction,
+      {BaseEvent? lastEvent,
       ThemePreset themePreset,
       ThemeData theme,
       double weatherLevel,
@@ -53,16 +53,16 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lastAction = freezed,
+    Object? lastEvent = freezed,
     Object? themePreset = null,
     Object? theme = null,
     Object? weatherLevel = null,
     Object? widgetMode = null,
   }) {
     return _then(_value.copyWith(
-      lastAction: freezed == lastAction
-          ? _value.lastAction
-          : lastAction // ignore: cast_nullable_to_non_nullable
+      lastEvent: freezed == lastEvent
+          ? _value.lastEvent
+          : lastEvent // ignore: cast_nullable_to_non_nullable
               as BaseEvent?,
       themePreset: null == themePreset
           ? _value.themePreset
@@ -92,7 +92,7 @@ abstract class _$$_AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {BaseEvent? lastAction,
+      {BaseEvent? lastEvent,
       ThemePreset themePreset,
       ThemeData theme,
       double weatherLevel,
@@ -110,16 +110,16 @@ class __$$_AppStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lastAction = freezed,
+    Object? lastEvent = freezed,
     Object? themePreset = null,
     Object? theme = null,
     Object? weatherLevel = null,
     Object? widgetMode = null,
   }) {
     return _then(_$_AppState(
-      lastAction: freezed == lastAction
-          ? _value.lastAction
-          : lastAction // ignore: cast_nullable_to_non_nullable
+      lastEvent: freezed == lastEvent
+          ? _value.lastEvent
+          : lastEvent // ignore: cast_nullable_to_non_nullable
               as BaseEvent?,
       themePreset: null == themePreset
           ? _value.themePreset
@@ -145,14 +145,14 @@ class __$$_AppStateCopyWithImpl<$Res>
 
 class _$_AppState implements _AppState {
   const _$_AppState(
-      {this.lastAction,
+      {this.lastEvent,
       required this.themePreset,
       required this.theme,
       required this.weatherLevel,
       required this.widgetMode});
 
   @override
-  final BaseEvent? lastAction;
+  final BaseEvent? lastEvent;
   @override
   final ThemePreset themePreset;
   @override
@@ -164,7 +164,7 @@ class _$_AppState implements _AppState {
 
   @override
   String toString() {
-    return 'AppState(lastAction: $lastAction, themePreset: $themePreset, theme: $theme, weatherLevel: $weatherLevel, widgetMode: $widgetMode)';
+    return 'AppState(lastEvent: $lastEvent, themePreset: $themePreset, theme: $theme, weatherLevel: $weatherLevel, widgetMode: $widgetMode)';
   }
 
   @override
@@ -172,8 +172,8 @@ class _$_AppState implements _AppState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AppState &&
-            (identical(other.lastAction, lastAction) ||
-                other.lastAction == lastAction) &&
+            (identical(other.lastEvent, lastEvent) ||
+                other.lastEvent == lastEvent) &&
             (identical(other.themePreset, themePreset) ||
                 other.themePreset == themePreset) &&
             (identical(other.theme, theme) || other.theme == theme) &&
@@ -185,7 +185,7 @@ class _$_AppState implements _AppState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, lastAction, themePreset, theme, weatherLevel, widgetMode);
+      runtimeType, lastEvent, themePreset, theme, weatherLevel, widgetMode);
 
   @JsonKey(ignore: true)
   @override
@@ -196,14 +196,14 @@ class _$_AppState implements _AppState {
 
 abstract class _AppState implements AppState {
   const factory _AppState(
-      {final BaseEvent? lastAction,
+      {final BaseEvent? lastEvent,
       required final ThemePreset themePreset,
       required final ThemeData theme,
       required final double weatherLevel,
       required final WeatherWidgetMode widgetMode}) = _$_AppState;
 
   @override
-  BaseEvent? get lastAction;
+  BaseEvent? get lastEvent;
   @override
   ThemePreset get themePreset;
   @override
