@@ -2,26 +2,26 @@ import 'package:flutter/material.dart';
 import '/business/state.dart';
 
 @immutable
-abstract class ActionBase {}
+abstract class BaseEvent {}
 
-class ActionInit extends ActionBase {}
+class InitEvent extends BaseEvent {}
 
-class ActionPullState extends ActionBase {}
+class PullStateEvent extends BaseEvent {}
 
-class ActionChangeThemePreset extends ActionBase {
+class ChangeThemePresetEvent extends BaseEvent {
   final ThemePreset preset;
 
-  ActionChangeThemePreset({required this.preset});
+  ChangeThemePresetEvent({required this.preset});
 }
 
-class ActionChangeWeatherLevel extends ActionBase {
+class ChangeWeatherLevelEvent extends BaseEvent {
   final double weatherLevel;
 
-  ActionChangeWeatherLevel({required this.weatherLevel});
+  ChangeWeatherLevelEvent({required this.weatherLevel});
 }
 
-class ActionChangeWidgetMode extends ActionBase {
+class ChangeWidgetModeEvent extends BaseEvent {
   final WeatherWidgetMode newMode;
 
-  ActionChangeWidgetMode({required this.newMode});
+  ChangeWidgetModeEvent({required this.newMode});
 }

@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 divisions: 100,
                 label: state.weatherLevel.toString(),
                 onChanged: (newValue) {
-                  bloc.add(ActionChangeWeatherLevel(weatherLevel: newValue));
+                  bloc.add(ChangeWeatherLevelEvent(weatherLevel: newValue));
                 },
               ),
             ),
@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       weatherLevel: state.weatherLevel,
                       mode: state.widgetMode,
                       onModeChanged: (newMode) {
-                        bloc.add(ActionChangeWidgetMode(newMode: newMode));
+                        bloc.add(ChangeWidgetModeEvent(newMode: newMode));
                       },
                     ),
                   ),

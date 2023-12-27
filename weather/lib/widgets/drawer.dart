@@ -33,7 +33,7 @@ class DrawerSettings extends StatelessWidget {
                   selected: {bloc.state.themePreset},
                   onSelectionChanged: (Set<ThemePreset> newSelection) {
                     bloc.add(
-                        ActionChangeThemePreset(preset: newSelection.single));
+                        ChangeThemePresetEvent(preset: newSelection.single));
                     scaffoldKey.currentState?.closeDrawer();
                   },
                   segments: const [

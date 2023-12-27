@@ -6,7 +6,7 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import '/business/actions.dart';
 import '/business/state.dart';
 
-class AppBloc extends Bloc<ActionBase, AppState> {
+class AppBloc extends Bloc<BaseEvent, AppState> {
   AppBloc()
       : super(
           AppState(
@@ -16,24 +16,24 @@ class AppBloc extends Bloc<ActionBase, AppState> {
             widgetMode: WeatherWidgetMode.small,
           ),
         ) {
-    on<ActionInit>(_onActionInit);
-    on<ActionPullState>(_onActionPullState);
-    on<ActionChangeThemePreset>(_onActionChangeThemePreset);
-    on<ActionChangeWeatherLevel>(_onActionChangeWeatherLevel);
-    on<ActionChangeWidgetMode>(_onActionChangeWidgetMode);
+    on<InitEvent>(_onActionInit);
+    on<PullStateEvent>(_onActionPullState);
+    on<ChangeThemePresetEvent>(_onActionChangeThemePreset);
+    on<ChangeWeatherLevelEvent>(_onActionChangeWeatherLevel);
+    on<ChangeWidgetModeEvent>(_onActionChangeWidgetMode);
   }
 
-  Future<void> _onActionInit(ActionInit action, Emitter<AppState> emit) async {
+  Future<void> _onActionInit(InitEvent action, Emitter<AppState> emit) async {
     emit(state.copyWith(lastAction: action));
   }
 
   Future<void> _onActionPullState(
-      ActionPullState action, Emitter<AppState> emit) async {
+      PullStateEvent action, Emitter<AppState> emit) async {
     emit(state);
   }
 
   Future<void> _onActionChangeThemePreset(
-      ActionChangeThemePreset action, Emitter<AppState> emit) async {
+      ChangeThemePresetEvent action, Emitter<AppState> emit) async {
     ThemeData theme = ThemeData.light();
 
     switch (action.preset) {
@@ -69,12 +69,12 @@ class AppBloc extends Bloc<ActionBase, AppState> {
   }
 
   Future<void> _onActionChangeWeatherLevel(
-      ActionChangeWeatherLevel action, Emitter<AppState> emit) async {
+      ChangeWeatherLevelEvent action, Emitter<AppState> emit) async {
     emit(state.copyWith(weatherLevel: action.weatherLevel));
   }
 
   Future<void> _onActionChangeWidgetMode(
-      ActionChangeWidgetMode action, Emitter<AppState> emit) async {
+      ChangeWidgetModeEvent action, Emitter<AppState> emit) async {
     emit(state.copyWith(lastAction: action, widgetMode: action.newMode));
   }
 }

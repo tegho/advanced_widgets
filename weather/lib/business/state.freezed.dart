@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AppState {
-  ActionBase? get lastAction => throw _privateConstructorUsedError;
+  BaseEvent? get lastAction => throw _privateConstructorUsedError;
   ThemePreset get themePreset => throw _privateConstructorUsedError;
   ThemeData get theme => throw _privateConstructorUsedError;
   double get weatherLevel => throw _privateConstructorUsedError;
@@ -33,7 +33,7 @@ abstract class $AppStateCopyWith<$Res> {
       _$AppStateCopyWithImpl<$Res, AppState>;
   @useResult
   $Res call(
-      {ActionBase? lastAction,
+      {BaseEvent? lastAction,
       ThemePreset themePreset,
       ThemeData theme,
       double weatherLevel,
@@ -63,7 +63,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
       lastAction: freezed == lastAction
           ? _value.lastAction
           : lastAction // ignore: cast_nullable_to_non_nullable
-              as ActionBase?,
+              as BaseEvent?,
       themePreset: null == themePreset
           ? _value.themePreset
           : themePreset // ignore: cast_nullable_to_non_nullable
@@ -92,7 +92,7 @@ abstract class _$$_AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {ActionBase? lastAction,
+      {BaseEvent? lastAction,
       ThemePreset themePreset,
       ThemeData theme,
       double weatherLevel,
@@ -120,7 +120,7 @@ class __$$_AppStateCopyWithImpl<$Res>
       lastAction: freezed == lastAction
           ? _value.lastAction
           : lastAction // ignore: cast_nullable_to_non_nullable
-              as ActionBase?,
+              as BaseEvent?,
       themePreset: null == themePreset
           ? _value.themePreset
           : themePreset // ignore: cast_nullable_to_non_nullable
@@ -152,7 +152,7 @@ class _$_AppState implements _AppState {
       required this.widgetMode});
 
   @override
-  final ActionBase? lastAction;
+  final BaseEvent? lastAction;
   @override
   final ThemePreset themePreset;
   @override
@@ -196,14 +196,14 @@ class _$_AppState implements _AppState {
 
 abstract class _AppState implements AppState {
   const factory _AppState(
-      {final ActionBase? lastAction,
+      {final BaseEvent? lastAction,
       required final ThemePreset themePreset,
       required final ThemeData theme,
       required final double weatherLevel,
       required final WeatherWidgetMode widgetMode}) = _$_AppState;
 
   @override
-  ActionBase? get lastAction;
+  BaseEvent? get lastAction;
   @override
   ThemePreset get themePreset;
   @override
