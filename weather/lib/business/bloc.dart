@@ -24,7 +24,7 @@ class AppBloc extends Bloc<BaseEvent, AppState> {
   }
 
   Future<void> _onActionInit(InitEvent action, Emitter<AppState> emit) async {
-    emit(state.copyWith(lastAction: action));
+    emit(state.copyWith(lastEvent: action));
   }
 
   Future<void> _onActionPullState(
@@ -65,7 +65,7 @@ class AppBloc extends Bloc<BaseEvent, AppState> {
         break;
     }
     emit(state.copyWith(
-        lastAction: action, theme: theme, themePreset: action.preset));
+        lastEvent: action, theme: theme, themePreset: action.preset));
   }
 
   Future<void> _onActionChangeWeatherLevel(
@@ -75,6 +75,6 @@ class AppBloc extends Bloc<BaseEvent, AppState> {
 
   Future<void> _onActionChangeWidgetMode(
       ChangeWidgetModeEvent action, Emitter<AppState> emit) async {
-    emit(state.copyWith(lastAction: action, widgetMode: action.newMode));
+    emit(state.copyWith(lastEvent: action, widgetMode: action.newMode));
   }
 }
