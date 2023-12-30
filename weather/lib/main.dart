@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: BlocBuilder<AppBloc, AppState>(builder: (context, state) {
-        // print('STATE has been changed');
+        // print('STATE has been changed!');
         return ApplicationTheme(
           theme: state.theme,
           child: const ThemeMaterial(),
